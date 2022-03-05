@@ -2,7 +2,7 @@
 
 Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
-// UC 3
+// UC 4
 
 int is_present = 1;
 int wage_per_hr = 20;
@@ -10,35 +10,26 @@ int hr_per_day = 0;
 int wage_per_day = 0;
 int full_time = 1;
 
+// absent = 0;
+// full_time = 1;
+// part_time = 2;
+
 Random check = new Random();
-int emp_time = check.Next(0, 2);
+int status = check.Next(0, 3);
 
-Random check2 = new Random();
-int empCheck = check2.Next(0, 2);
-
-if (emp_time == full_time)
+switch (status)
 {
-    hr_per_day = 8;
-    if (empCheck == is_present)
-    {
+    case 0:
+        Console.WriteLine("Employee is absent.");
+        break;
+    case 1:
         Console.WriteLine("Full time employee is present.");
-    }
-    else
-    {
-        Console.WriteLine("Full time employee is absent.");
-    }
-}
-else
-{
-    hr_per_day = 4;
-    if (empCheck == is_present)
-    {
+        hr_per_day = 8;
+        break;
+    case 2:
         Console.WriteLine("Part time employee is present.");
-    }
-    else
-    {
-        Console.WriteLine("Part time employee is absent.");
-    }
+        hr_per_day = 4;
+        break;
 }
 
 wage_per_day = (wage_per_hr * hr_per_day);
