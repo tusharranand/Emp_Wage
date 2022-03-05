@@ -2,7 +2,7 @@
 
 Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
-// UC 5
+// UC 6
 
 int is_present = 1;
 int full_time = 1;
@@ -24,7 +24,9 @@ else
     hr_per_day = 4;
 }
 
-for (int i = 0; i < 20; i++) { 
+int days = 1;
+
+while ((hr_per_day * is_present <= 100) && (days <= 20)) {
 
     Random check2 = new Random();
     int empCheck = check2.Next(0, 2);
@@ -33,12 +35,16 @@ for (int i = 0; i < 20; i++) {
     {
         present_days++;
     }
+
+    days++;
 }
 
 wage_per_day = (wage_per_hr * hr_per_day);
 Console.WriteLine("Daily wage = " + wage_per_day);
 
 Console.WriteLine("Days present = " + present_days);
+
+Console.WriteLine("Working Hours = " + (present_days * hr_per_day));
 
 wage_per_month = (wage_per_day * present_days);
 Console.WriteLine("Monthly wage = " + wage_per_month);
