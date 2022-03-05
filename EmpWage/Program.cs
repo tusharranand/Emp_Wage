@@ -4,11 +4,9 @@ Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
 // UC 4
 
-int is_present = 1;
 int wage_per_hr = 20;
 int hr_per_day = 0;
 int wage_per_day = 0;
-int full_time = 1;
 
 // absent = 0;
 // full_time = 1;
