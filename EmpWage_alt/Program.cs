@@ -6,41 +6,41 @@ namespace EmpWage
 {
     class Program
     {
-        public const int full_time = 1;
-        public const int part_time = 2;
-        public const int wage_per_hr = 20;
-        public const int working_days = 20;
+        public const int Full_Time = 1;
+        public const int Part_Time = 2;
+        public const int Wage_Per_Hr = 20;
+        public const int Working_Days = 20;
 
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
-            int full_day_hr = 0;
-            int wage_per_day = 0;
-            int monthly_wage = 0;
+            int Full_Day_Hr = 0;
+            int Wage_Per_Day = 0;
+            int Monthly_Wage = 0;
 
-            for (int day = 0; day < working_days; day++)
+            for (int Day = 0; Day < Working_Days; Day++)
             {
-                Random check = new Random();
-                int status = check.Next(0, 3);
+                Random Check = new Random();
+                int Status = Check.Next(0, 3);
 
-                switch (status)
+                switch (Status)
                 {
-                    case full_time:
-                        full_day_hr = 8;
+                    case Full_Time:
+                        Full_Day_Hr = 8;
                         break;
-                    case part_time:
-                        full_day_hr = 4;
+                    case Part_Time:
+                        Full_Day_Hr = 4;
                         break;
                     default:
-                        full_day_hr = 0;
+                        Full_Day_Hr = 0;
                         break;
                 }
-                wage_per_day = (wage_per_hr * full_day_hr);
-                monthly_wage += wage_per_day;
-                Console.WriteLine("Daily wage = " + wage_per_day);
+                Wage_Per_Day = (Wage_Per_Hr * Full_Day_Hr);
+                Monthly_Wage += Wage_Per_Day;
+                Console.WriteLine("Daily wage = " + Wage_Per_Day);
             }
-            Console.WriteLine("Monthly wage = " + monthly_wage);
+            Console.WriteLine("Monthly wage = " + Monthly_Wage);
         }
     }
 }
