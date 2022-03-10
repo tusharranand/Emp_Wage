@@ -4,41 +4,41 @@ Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
 // UC 5
 
-int is_present = 1;
-int full_time = 1;
-int wage_per_hr = 20;
-int hr_per_day = 0;
-int wage_per_day = 0;
-int present_days = 0;
-int wage_per_month = 0;
+int Is_Present = 1;
+int Full_Time = 1;
+int Wage_Per_Hr = 20;
+int Hr_Per_Day = 0;
+int Wage_Per_Day = 0;
+int Present_Days = 0;
+int Wage_Per_Month = 0;
 
-Random check = new Random();
-int emp_time = check.Next(0, 2);
+Random Check = new Random();
+int Emp_Time = Check.Next(0, 2);
 
-if (emp_time == full_time)
+if (Emp_Time == Full_Time)
 {
-    hr_per_day = 8;
+    Hr_Per_Day = 8;
 }
 else
 {
-    hr_per_day = 4;
+    Hr_Per_Day = 4;
 }
 
 for (int i = 0; i < 20; i++) { 
 
-    Random check2 = new Random();
-    int empCheck = check2.Next(0, 2);
+    Random Present = new Random();
+    int EmpCheck = Present.Next(0, 2);
 
-    if (empCheck == is_present)
+    if (EmpCheck == Is_Present)
     {
-        present_days++;
+        Present_Days++;
     }
 }
 
-wage_per_day = (wage_per_hr * hr_per_day);
-Console.WriteLine("Daily wage = " + wage_per_day);
+Wage_Per_Day = (Wage_Per_Hr * Hr_Per_Day);
+Console.WriteLine("Daily wage = " + Wage_Per_Day);
 
-Console.WriteLine("Days present = " + present_days);
+Console.WriteLine("Days present = " + Present_Days);
 
-wage_per_month = (wage_per_day * present_days);
-Console.WriteLine("Monthly wage = " + wage_per_month);
+Wage_Per_Month = (Wage_Per_Day * Present_Days);
+Console.WriteLine("Monthly wage = " + Wage_Per_Month);
