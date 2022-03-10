@@ -4,12 +4,12 @@ Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
 // UC 1
 
-int is_present = 1;
+int Is_Present = 1;
 
 Random check = new Random();
-int empCheck = check.Next(0, 2);
+int EmpCheck = check.Next(0, 2);
 
-if (empCheck == is_present)
+if (EmpCheck == Is_Present)
 {
     Console.WriteLine("Employee is present.");
 }
