@@ -4,23 +4,23 @@ Console.WriteLine("Welcome to Employee Wage Computation Program.");
 
 // UC 2
 
-int is_present = 1;
-int wage_per_hr = 20;
-int hr_per_day = 0;
-int wage_per_day = 0;
+int Is_Present = 1;
+int Wage_Per_Hr = 20;
+int Hr_Per_Day = 0;
+int Wage_Per_Day = 0;
 
 Random check = new Random();
-int empCheck = check.Next(0, 2);
+int EmpCheck = check.Next(0, 2);
 
-if (empCheck == is_present)
+if (EmpCheck == Is_Present)
 {
     Console.WriteLine("Employee is present.");
-    hr_per_day = 8;
+    Hr_Per_Day = 8;
 }
 else
 {
     Console.WriteLine("Employee is absent.");
 }
 
-wage_per_day = (wage_per_hr * hr_per_day);
-Console.WriteLine("Daily wage = " + wage_per_day);
+Wage_Per_Day = (Wage_Per_Hr * Hr_Per_Day);
+Console.WriteLine("Daily wage = " + Wage_Per_Day);
