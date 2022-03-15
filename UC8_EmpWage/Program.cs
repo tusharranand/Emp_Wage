@@ -28,11 +28,6 @@ namespace UC8_EmpWage
     {
         public const int Full_Time = 1;
         public const int Part_Time = 2;
-        public int Hr_Per_Day = 0;
-        public int Wage_Per_Day = 0;
-        public int Total_Working_Hrs = 0;
-        public int Present_Days = 0;
-        public int Monthly_Wage = 0;
         private Dictionary<string, Company> Companies_Dict = new Dictionary<string, Company>();
 
         private void AddCompany(string Company_Name, int Wage_Per_Hr, int Full_Hr_Per_Day, int Part_Hr_Per_Day, int Max_Working_Hrs, int Max_Working_Days)
@@ -48,8 +43,11 @@ namespace UC8_EmpWage
 
         public void Calculations(string Company_Name)
         {
-            Total_Working_Hrs = 0;
-            Present_Days = 0;
+            int Hr_Per_Day = 0;
+            int Wage_Per_Day = 0;
+            int Total_Working_Hrs = 0;
+            int Present_Days = 0;
+            int Monthly_Wage = 0;
 
             if (!Companies_Dict.ContainsKey(Company_Name.ToLower()))
                 throw new ArgumentNullException("Company doesn't Exist!");
