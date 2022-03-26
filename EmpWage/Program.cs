@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UC8_EmpWage
+namespace EmpWage
 {
     class Company
     {
@@ -28,12 +28,24 @@ namespace UC8_EmpWage
     {
         public const int Full_Time = 1;
         public const int Part_Time = 2;
-        private Dictionary<string, Company> Companies_Dict = new Dictionary<string, Company>();
+        private Dictionary<string, Company> Companies_Dict;
+        public string[] Company_List;
+        public int Company_Index = 0;
 
-        private void AddCompany(string Company_Name, int Wage_Per_Hr, int Full_Hr_Per_Day, int Part_Hr_Per_Day, int Max_Working_Hrs, int Max_Working_Days)
+        public Wage_Computation(int Number)
         {
-            Company comp_obj = new Company(Company_Name.ToLower(), Wage_Per_Hr, Full_Hr_Per_Day, Part_Hr_Per_Day, Max_Working_Hrs, Max_Working_Days);
+            Companies_Dict = new Dictionary<string, Company>();
+            Company_List = new string[2 * Number];
+        }
+
+        private void AddCompany(string Company_Name, int Wage_Per_Hr, int Full_Hr_Per_Day, 
+            int Part_Hr_Per_Day, int Max_Working_Hrs, int Max_Working_Days)
+        {
+            Company comp_obj = new Company(Company_Name.ToLower(), Wage_Per_Hr, Full_Hr_Per_Day, 
+                Part_Hr_Per_Day, Max_Working_Hrs, Max_Working_Days);
             Companies_Dict.Add(Company_Name.ToLower(), comp_obj);
+            Company_List[Company_Index] = Company_Name;
+            Company_Index++;
         }
 
         private int Present_Check()
@@ -53,7 +65,8 @@ namespace UC8_EmpWage
                 throw new ArgumentNullException("Company doesn't Exist!");
             Companies_Dict.TryGetValue(Company_Name.ToLower(), out Company comp_obj);
 
-            while (Total_Working_Hrs < comp_obj.Max_Working_Hrs && Present_Days < comp_obj.Max_Working_Days)
+            while (Total_Working_Hrs < comp_obj.Max_Working_Hrs && 
+                Present_Days < comp_obj.Max_Working_Days)
             {
 
                 switch (Present_Check())
@@ -74,22 +87,33 @@ namespace UC8_EmpWage
                 Wage_Per_Day = (comp_obj.Wage_Per_Hr * Hr_Per_Day);
                 Monthly_Wage += Wage_Per_Day;
             }
-            Console.WriteLine("For " + Company_Name);
-            Console.WriteLine("Total hours worked = " + Total_Working_Hrs);
-            Console.WriteLine("Total days present = " + Present_Days);
-            Console.WriteLine("Monthly wage = " + Monthly_Wage + "\n");
+            Company_List[Company_Index] = Convert.ToString(Monthly_Wage);
+            Company_Index++;
+        }
+        public void View_Wage()
+        {
+            for (int i=0; i < Company_List.Length; i+=2)
+            {
+                Console.WriteLine("Monthly wage for {0} is {1}", Company_List[i], 
+                    Company_List[i + 1]);
+            }
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program.");
-            Wage_Computation Employee = new Wage_Computation();
+            Wage_Computation Employee = new Wage_Computation(3);
 
             Employee.AddCompany("TATA", 20, 8, 4, 100, 20);
             Employee.Calculations("Tata");
 
             Employee.AddCompany("Mahindra", 30, 8, 4, 100, 20);
             Employee.Calculations("Mahindra");
+
+            Employee.AddCompany("DMart", 40, 9, 5, 100, 20);
+            Employee.Calculations("Dmart");
+
+            Employee.View_Wage();
         }
     }
 }
