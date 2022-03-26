@@ -23,8 +23,14 @@ namespace EmpWage
         }
 
     }
+    public interface ICompute_Emp_Wage
+    {
+        public void AddCompany(string Company_Name, int Wage_Per_Hr, int Full_Hr_Per_Day,
+            int Part_Hr_Per_Day, int Max_Working_Hrs, int Max_Working_Days);
+        public void Calculations(string Company_Name);
 
-    class Wage_Computation
+    }
+    class Wage_Computation : ICompute_Emp_Wage
     {
         public const int Full_Time = 1;
         public const int Part_Time = 2;
@@ -38,7 +44,7 @@ namespace EmpWage
             Company_List = new string[2 * Number];
         }
 
-        private void AddCompany(string Company_Name, int Wage_Per_Hr, int Full_Hr_Per_Day, 
+        public void AddCompany(string Company_Name, int Wage_Per_Hr, int Full_Hr_Per_Day, 
             int Part_Hr_Per_Day, int Max_Working_Hrs, int Max_Working_Days)
         {
             Company comp_obj = new Company(Company_Name.ToLower(), Wage_Per_Hr, Full_Hr_Per_Day, 
