@@ -91,13 +91,11 @@ namespace EmpWage
             Company_List.Add(Monthly_Wage);
         }
 
-        public void View_Wage()
+        public void View_Wage(string Name)
         {
-            for (int i = 0; i < Company_List.Count; i += 3)
-            {
-                Console.WriteLine("Monthly wage for {0} with\nDaily Wage = {1} is {2}\n", 
-                    Company_List[i], Company_List[i + 1], Company_List[i + 2]);
-            }
+            int Index = Company_List.IndexOf(Name);
+            Console.WriteLine("\nMonthly wage for {0} with\nDaily Wage = {1} is {2}\n",
+                    Company_List[Index], Company_List[Index + 1], Company_List[Index + 2]);
         }
 
         static void Main(string[] args)
@@ -114,7 +112,9 @@ namespace EmpWage
             Employee.AddCompany("DMart", 40, 9, 5, 100, 20);
             Employee.Calculations("Dmart");
 
-            Employee.View_Wage();
+            Console.Write("Enter the name of the company you want to see the total wage of: ");
+            string Name = Console.ReadLine();
+            Employee.View_Wage(Name);
         }
     }
 }
