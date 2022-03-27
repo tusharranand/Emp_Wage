@@ -35,7 +35,6 @@ namespace EmpWage
         public const int Part_Time = 2;
         private Dictionary<string, Company> Companies_Dict;
         private ArrayList Company_List;
-        private int No_of_Companies;
 
         public Wage_Computation()
         {
@@ -49,6 +48,7 @@ namespace EmpWage
                 Part_Hr_Per_Day, Max_Working_Hrs, Max_Working_Days);
             Companies_Dict.Add(Company_Name.ToLower(), comp_obj);
             Company_List.Add(Company_Name);
+            Company_List.Add(Wage_Per_Hr * Full_Hr_Per_Day);
         }
         private int Present_Check()
         {
@@ -93,9 +93,10 @@ namespace EmpWage
 
         public void View_Wage()
         {
-            for (int i = 0; i < Company_List.Count; i += 2)
+            for (int i = 0; i < Company_List.Count; i += 3)
             {
-                Console.WriteLine("Monthly wage for {0} is {1}", Company_List[i], Company_List[i + 1]);
+                Console.WriteLine("Monthly wage for {0} with\nDaily Wage = {1} is {2}\n", 
+                    Company_List[i], Company_List[i + 1], Company_List[i + 2]);
             }
         }
 
